@@ -1,0 +1,55 @@
+{
+  "name": "@frakment/mcp",
+  "version": "1.0.1",
+  "packageManager": "pnpm@12.14.0",
+  "description": "MIT-licensed MCP server for the Frakment component registry",
+  "keywords": [
+    "ai",
+    "frakment",
+    "mcp",
+    "model-context-protocol",
+    "registry"
+  ],
+  "homepage": "https://github.com/frakment/mcp#readme",
+  "bugs": {
+    "url": "https://github.com/frakment/mcp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frakment/mcp.git"
+  },
+  "license": "MIT",
+  "author": "The Frakment Authors (https://github.com/frakment)",
+  "type": "module",
+  "bin": {
+    "frakment-mcp": "./dist/src/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/copy-runtime-package.ts",
+    "changeset": "changeset",
+    "prepack": "node scripts/run-package-script.ts build",
+    "pretest": "node scripts/run-package-script.ts build",
+    "release": "node scripts/run-package-script.ts build && changeset publish",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "version:packages": "changeset version"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.3",
+    "@types/node": "^26.6.6",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.1"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}
